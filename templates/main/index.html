@@ -1,0 +1,75 @@
+{% extends 'base.html'%}
+{% load static %}
+
+
+{% block con %}
+
+
+
+    <!-- Swiper -->
+    <div class="swiper mySwiper">
+      <div class="swiper-wrapper">
+
+        <div class="swiper-slide container-fluid" style="color: white;">
+         
+                <h3>🚀 Welcome Hoon's Web Page </h3>   
+                <button class="btn btn-outline-light" onclick="secondpage()">▼</button>
+    
+        </div>
+
+        <!-- AWS Ability Info -->
+        <div class="swiper-slide container-fluid " style="color: white;">
+                                    
+                <button class="btn btn-outline-light" onclick="thirdpage()">▼</button>
+        
+        </div>
+
+        <!-- OS Ability Info -->
+        <div class="swiper-slide container-fluid "  style="color: white;">
+                <button class="btn btn-outline-light" onclick="fourthpage()">▼</button>
+        </div>
+
+        <!-- Web Ability Info -->
+        <div class="swiper-slide container-fluid " style="color: white;">
+                <button class="btn btn-outline-light" onclick="Fifthpage()">▼</button>
+
+        </div>
+
+        <!-- All Info -->
+        <div class="swiper-slide">
+                <button class="btn btn-outline-light btn-bg" onclick="toppage()">top</button>
+
+        </div>
+
+        <div class="swiper-slide">Slide 6</div>
+        <div class="swiper-slide">Slide 7</div>
+        <div class="swiper-slide">Slide 8</div>
+        <div class="swiper-slide">Slide 9</div>
+
+      </div>
+      <div class="swiper-pagination"></div>      
+    </div>
+
+    <!-- Swiper JS -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
+    <script src="/static/js/swiper.js"></script>
+    <script>
+        function toppage() {
+        swiper.slideTo(0, 500, false)
+    }
+        function secondpage() {
+        swiper.slideTo(1, 500, false)
+    }
+        function thirdpage() {
+        swiper.slideTo(2, 500, false)
+    }
+        function fourthpage() {
+        swiper.slideTo(3, 500, false)
+    }
+        function Fifthpage() {
+        swiper.slideTo(4, 500, false)
+    }
+    </script>
+
+{% endblock %}
+
