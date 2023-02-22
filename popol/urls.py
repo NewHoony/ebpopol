@@ -23,5 +23,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path("", views.index),
     path("main/", include("main.urls")),
-    path('coverletter', include("coverletter.urls"))
+    path('coverletter', include("coverletter.urls")),
+    path('vtech/', include("vtech.urls")),
+
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

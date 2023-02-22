@@ -3,8 +3,8 @@
 {% block con %}
 
 
-    <div class="singup_page" style="padding-top: 50px; color: white;">
-        <section class="singup-form" style="padding-top: 50px;">
+    <div class="singup_page" style="color: white;">
+        <section class="singup-form" style="padding-top: 200px;">
             <h1>Sign up to Account </h1>
             <form method="post" enctype="multipart/form-data">
                 {% csrf_token %}
@@ -23,8 +23,8 @@
                 </div>
 
                 <div class="int-area">
-                    <label for="ucomn">Commnet</label><br>
-                    <textarea class="form-control" name="ucomn" placeholder="자기소개"></textarea><br>
+                    <label for="ucomn">Commant</label><br>
+                    <textarea class="form-control" name="ucomn" placeholder="간단한 코멘트를 남겨주세요"></textarea><br>
                 </div>
 
                 <div>

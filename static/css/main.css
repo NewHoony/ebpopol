@@ -81,7 +81,7 @@ html,body {
     width: 100%;
   }
 
-body {
+  body {
     background-image: url('/static/base/main.jpg');
   }
   .swiper {

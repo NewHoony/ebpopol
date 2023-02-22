@@ -1,0 +1,109 @@
+{% extends 'base.html' %}
+
+{% block con %}
+
+<div class ="container" style="color: white; padding-top: 50px;">
+
+<!-- 제목 bg-primary rounded-3-->
+    <div class="p-5 mb-4" style="background-color:transparent; color:white">
+      <div class="container-fluid py-5">
+        <h1 class="display-5 fw-bold">Network Technology</h1>
+        <p class="col-md-8 fs-4"></p>
+      </div>
+    </div>
+
+    <div class="justify-content-around" style="display: flex;">
+        <div class="col-8">
+
+                <div class="card border-light mb-3" style="width: fit-content; height: fit-content; background-color:transparent;">
+                    <div class="row g-0">
+                      <div class="col-md-4">
+                        <img src="#" class="img-fluid rounded-start" alt="...">
+                      </div>
+                      <div class="col-md-8">
+                        <div class="card-body">
+                          <h5 class="card-title">Network Portfolio Link</h5>
+                          <p class="card-text">네트워크 포트폴리오 링크입니다.</p>
+                        </div>
+                        <div class="card-footer text-end">
+                            <button class="btn btn-info">바로가기</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="card border-light" style="width: fit-content; height: fit-content; background-color:transparent;">
+                    <div class="row g-0">
+                      <div class="col-md-4 text-center">
+                        <img src="#" class="img-fluid img-thumbnail" alt="..." width="200px">
+                      </div>
+                      <div class="col-md-8">
+                        <div class="card-body">
+                          <h5 class="card-title">Network Document Page</h5>
+                          <p class="card-text">네트워크 기술 블로그입니다.</p>
+                        </div>
+                        <div class="card-footer text-end" style="padding-top: 20px;">
+                            <a href="https://flossy-quicksand-0bd.notion.site/Network-fc8eb03ae3a445ff92252a968af054ec"><button class="btn btn-info">바로가기</button></a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+        </div>
+        
+
+        <div class="col-1 opacity-100 vr" style="height: auto; background-color: aqua"></div>
+
+        <div class="col-4">
+            <div class="container" style="color:white">
+                <h3><b>Portable Document Format</b></h3>
+                <hr class="opacity-100" style="height:3px; color: aqua">
+                    {% if user.is_superuser %}
+                    <a href="{% url 'vtech:upload' %}" class="btn btn-outline-light">upload page</a>
+                    {% endif %}
+                    <table class="table w-auto mb-0" style="color:white">
+                        <thead>
+                            <tr>
+                                {% if user.is_superuser %}
+                                <th>Cover</th>
+                                <th>Title &
+                                    Download
+                                </th>
+                                <th>Del</th>
+                                {% endif %}
+                            </tr>
+                        </thead>
+                        <tbody>
+                        {% for tech in techs %}
+                        <tr>
+                            <td>
+                            {% if tech.cover %}
+                                <img src="{{ tech.cover.url }}" alt="{{ tech.title }}" style="width: 200px; height: 100px">
+                            {% else %}
+                                <span class="text-muted">No cover</span>
+                            {% endif %}
+                            </td>
+                            <td>{{ tech.title }}<br><br>
+                                <a href="{{ tech.pdf.url }}" class="btn btn-outline-light btn-sm" target="_blank">Download</a>
+                            </td>
+                            <td>
+                                {% if user.is_superuser %}
+                                    <form method="post" action="{% url 'vtech:delete' tech.pk %}">
+                                    {% csrf_token %}
+                                    <button type="submit" class="btn btn-outline-danger btn-sm">Del</button>
+                                    </form>
+                                {% endif %}
+                            </td>
+                        </tr>
+                        {% endfor %} 
+                        </tbody>
+                
+                    </table>
+                </div>
+        </div>
+
+    </div>
+
+</div>
+
+
+{% endblock %}
