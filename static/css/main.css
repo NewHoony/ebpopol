@@ -79,7 +79,9 @@ html,body {
     position: relative;
     height: 100%;
     width: 100%;
-   background-color: black;
+  }
+  body {
+    background-image: url('/static/base/main.jpg');
   }
   .swiper {
     width: 100%;
@@ -90,7 +92,7 @@ html,body {
     text-align: center;
     font-size: 18px;
     background: #fff;
-    background-image: url('/static/base/main2.jpg');
+    background-image: url('/static/base/main.jpg');
     background-size: cover;
     /* Center slide text vertically */
     display: -webkit-box;

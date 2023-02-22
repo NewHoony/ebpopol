@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block con %}
+
+
+    <div class="singup_page" style="padding-top: 50px; color: white;">
+        <section class="singup-form" style="padding-top: 50px;">
+            <h1>Sign up to Account </h1>
+            <form method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="int-area">
+                    <label for="uname">ID</label><br>
+                    <input type="text" name="uname" placeholder="아이디입력"><br>
+                </div>
+
+                <div class="int-area">
+                    <label for="upass">Password</label><br>
+                    <input type="password" name="upass" placeholder="비밀번호 입력"><br>
+                </div>
+                <div class="int-area">
+                    <label for="upass1">Password One more</label><br>
+                    <input type="password" name="upass1" placeholder="비밀번호 확인"><br>
+                </div>
+
+                <div class="int-area">
+                    <label for="ucomn">Commnet</label><br>
+                    <textarea class="form-control" name="ucomn" placeholder="자기소개"></textarea><br>
+                </div>
+
+                <div>
+                    <label class="form-label">Profile Photo</label>
+                    <input type="file" class="form-control" name ="upic" id="exampleInputPassword1"><br>
+                </div>
+
+                <div class ="text-center">
+                    <button class="btn btn-outline-light">회원가입</button>
+                    <a href="{% url 'main:index' %}"><button type="button" class ="btn btn-outline-danger">뒤로가기</button></a>
+                </div>
+            </form>
+        </section>
+    </div>
+
+
+
+{% endblock %}

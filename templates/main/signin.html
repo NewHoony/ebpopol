@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% block con %}
+
+    <div class="singin_page" style="padding-top: 50px;">
+
+        <section class="login-form">
+            <h1>Sign in to Account</h1>
+            <form method="post">
+                {% csrf_token %}
+                <div class="int-area">
+                    <input type="text" name="uname" class="form-control" style="font-weight: bold;" autocomplete="off" required>
+                    <label for="uname">USER ID</label><br>
+                </div> 
+                
+                <div class="int-area">
+                    <input type="password" name="upass" class="form-control" style="font-weight: bold;" autocomplete="off" required>
+                    <label for="upass">PASSWORD</label><br>
+                </div>   
+                <div class="btn-area">
+                    <button type="submit">LOGIN</button>
+                </div>
+            </form>
+        </section>
+    
+    </div>
+
+{% endblock %}
+
+
+
+
+
