@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block con %}
+
+<div class="container text-center" style="color:white; padding-top: 200px;">
+<h1>ETC Upload Page</h1><hr>
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form|crispy }}<hr>
+    <button type="submit" class="btn btn-outline-light">Upload pdf</button>
+
+</form>
+</div>
+
+{% endblock %}

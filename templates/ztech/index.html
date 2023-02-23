@@ -1,0 +1,109 @@
+{% extends 'base.html' %}
+
+{% block con %}
+
+<div class ="container-fluid" style="color: white; padding-top: 50px;">
+
+<!-- 제목 bg-primary rounded-3-->
+    <div class="p-5 mb-4" style="background-color:transparent; color:white">
+      <div class="container-fluid py-5">
+        <h1 class="display-5 fw-bold">ETC Technology</h1>
+        <p class="col-md-8 fs-4"></p>
+      </div>
+    </div>
+
+    <div class="justify-content-around" style="display: flex;">
+        <div class="col-8">
+
+            <div class ="container" style="color: white;">
+                <div style="padding-bottom: 10px;">
+                    {% if user.is_superuser %}
+                    <a  href="{% url 'ztech:create' %}" class="btn btn-outline-light">Link append</a>
+                    {% endif %}
+                </div>
+        
+                <div>
+                    {% for book in books %}
+                    <div>
+                        <div class="card border-light mb-3" style="width: fit-content; height: fit-content; background-color:transparent;">
+                            <div class="card-body">
+                                {% if book.site_cover %}
+                                    <img src="{{ book.site_cover.url }}" class="card-img-top" alt="{{ book.site_name }}"><br>
+                                {% else %}
+                                    <span class="text-muted">No cover</span><br>
+                                {% endif %}
+                                <p class="card-text" style="height: 25px;">{{ book.site_con }}</p>
+                                <div class="text-center">
+                                    <a href="{{ book.site_url }}" targer="_blank" class="btn btn-outline-info">Detail View</a>
+                                </div>
+                                <div class="text-end">
+                                {% if user.is_superuser %}
+                                    <form method="post" action="{% url 'ztech:delete_book' book.pk %}">
+                                    {% csrf_token %}
+                                        <button type="submit" class="btn btn-outline-danger btn-sm">Del</button>
+                                    </form>
+                                {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                     </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+
+        <div class="col-1 opacity-100 vr" style="height: auto; background-color: white"></div>
+
+        <div class="container col-4">
+            <div class="container" style="color:white">
+                <h3><b>PDF</b></h3>
+                    {% if user.is_superuser %}
+                    <a href="{% url 'ztech:upload' %}" class="btn btn-outline-light">Upload PDF</a>
+                    {% endif %}
+                    <table class="table w-auto mb-0" style="color:white">
+                        <thead>
+                            <tr>
+                                {% if user.is_superuser %}
+                                <th>Cover</th>
+                                <th>Title &
+                                    Download
+                                </th>
+                                <th>Del</th>
+                                {% endif %}
+                            </tr>
+                        </thead>
+                        <tbody>
+                        {% for tech in techs %}
+                        <tr>
+                            <td>
+                            {% if tech.cover %}
+                                <img src="{{ tech.cover.url }}" alt="{{ tech.title }}" style="width: 200px; height: 100px">
+                            {% else %}
+                                <span class="text-muted">No cover</span>
+                            {% endif %}
+                            </td>
+                            <td>{{ tech.title }}<br><br>
+                                <a href="{{ tech.pdf.url }}" class="btn btn-outline-light btn-sm" target="_blank">View</a>
+                            </td>
+                            <td>
+                                {% if user.is_superuser %}
+                                    <form method="post" action="{% url 'ztech:delete' tech.pk %}">
+                                    {% csrf_token %}
+                                    <button type="submit" class="btn btn-outline-danger btn-sm">Del</button>
+                                    </form>
+                                {% endif %}
+                            </td>
+                        </tr>
+                        {% endfor %} 
+                        </tbody>
+                
+                    </table>
+                </div>
+        </div>
+
+    </div>
+
+</div>
+
+
+{% endblock %}

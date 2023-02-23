@@ -25,5 +25,9 @@ urlpatterns = [
     path("main/", include("main.urls")),
     path('coverletter', include("coverletter.urls")),
     path('vtech/', include("vtech.urls")),
+    path('wtech/', include("wtech.urls")),
+    path('xtech/', include("xtech.urls")),
+    path('ytech/', include("ytech.urls")),
+    path('ztech/', include("ztech.urls")),
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

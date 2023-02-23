@@ -2,12 +2,13 @@
 
 {% block con %}
 
-<div class ="container" style="color: white; padding-top: 50px;">
+<div class ="container-fluid" style="color: white; padding-top: 50px;">
 
 <!-- 제목 bg-primary rounded-3-->
     <div class="p-5 mb-4" style="background-color:transparent; color:white">
       <div class="container-fluid py-5">
         <h1 class="display-5 fw-bold">Network Technology</h1>
+
         <p class="col-md-8 fs-4"></p>
       </div>
     </div>
@@ -16,12 +17,11 @@
         <div class="col-8">
 
             <div class ="container" style="color: white;">
-                <div class="text-end" style="padding-bottom: 10px;">
+                <div style="padding-bottom: 10px;">
                     {% if user.is_superuser %}
                     <a  href="{% url 'vtech:create' %}" class="btn btn-outline-light">Link append</a>
                     {% endif %}
                 </div>
-        
                 <div>
                     {% for book in books %}
                     <div>
@@ -32,10 +32,17 @@
                                 {% else %}
                                     <span class="text-muted">No cover</span>
                                 {% endif %}
-                                <h5 class="card-title"><b>{{ book.site_name }}</b></h5>
                                 <p class="card-text" style="height: 25px;">{{ book.site_con }}</p>
+                                <div class="text-center">
+                                    <a href="{{ book.site_url }}" targer="_blank" class="btn btn-outline-info">Detail View</a>
+                                </div>
                                 <div class="text-end">
-                                <a href="{{ book.site_url }}" targer="_blank" class="btn btn-dark">LINK</a>
+                                {% if user.is_superuser %}
+                                    <form method="post" action="{% url 'vtech:delete_book' book.pk %}">
+                                {% csrf_token %}
+                                        <button type="submit" class="btn btn-outline-danger btn-sm">Del</button>
+                                    </form>
+                                {% endif %}
                                 </div>
                              </div>
                          </div>
@@ -45,7 +52,7 @@
             </div>
         </div>
 
-        <div class="col-1 opacity-100 vr" style="height: auto; background-color: aqua"></div>
+        <div class="col-1 opacity-100 vr" style="height: auto; background-color: white"></div>
 
         <div class="container col-4">
             <div class="container" style="color:white">

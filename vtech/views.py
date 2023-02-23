@@ -43,9 +43,10 @@ def delete(req,pk):
         tech.delete()
         return redirect('vtech:index')
 
-# def book_delete(req,bk):
-#     if req.method == 'POST':
-#         book = Book.objects.get(id=bk)
-#         book.delete()
-#         return redirect('vtech:index')
+def delete_book(req,pk):
+    if req.method == 'POST':
+        book = Book.objects.get(pk=pk)
+        book.delete()
+        return redirect('vtech:index')
+
 # Create your views here.

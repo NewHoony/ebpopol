@@ -47,6 +47,10 @@ INSTALLED_APPS = [
     'django_cleanup.apps.CleanupConfig',
     'coverletter.apps.CoverletterConfig',
     'vtech.apps.VtechConfig',
+    'wtech.apps.WtechConfig',
+    'xtech.apps.XtechConfig',
+    'ytech.apps.YtechConfig',
+    'ztech.apps.ZtechConfig',
 ]
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
