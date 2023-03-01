@@ -11,20 +11,58 @@
       <div class="swiper-wrapper">
 
         <div class="swiper-slide container-fluid" style="color: white;">
-            <div>
-                <h3>🚀 Welcome Hoon's Web Page git deploy </h3>
+       
+            <div class="col container" style="height: 700px;">
+                <div class="row" style="justify-content: space-around; height: 100%;">
+                    <div>
+                        <p class="txt-title"></p>
+                    </div>
+                    <div style="position: absolute; left:50%; top:50%; margin-top: -195px; margin-left: -195px; padding-top: 50px;">
+                        <img src="/static/base/main/KakaoTalk_20230221_175552301.jpg"  class = "rounded-circle" style="width: 350px; height: 350px;">
+                    </div>
+                  
+                </div>
+                <div class="row mt-5" style="height: 20%;">
+                    <div class="col-12" style="padding-right: 30px;">
+                        <button class="btn btn-outline-light" onclick="secondpage()" style="width: 100px;">More</button>
+                    </div>
+                </div>
             </div>
-            <div>   
-                <button class="btn btn-outline-light" onclick="secondpage()">▼</button>
-            </div>
-    
         </div>
 
-        <!-- AWS Ability Info -->
+        <!-- Who am I Info -->
         <div class="swiper-slide container-fluid " style="color: white;">
-                                    
-                <button class="btn btn-outline-light" onclick="thirdpage()">▼</button>
-        
+            <div class="col container" style="height: 100%; padding-top: 50px;">
+                <h1>Who am I</h1><br>
+                <div class="row" style="height: 80%;">
+                    <div class="col-12" style="justify-content: space-around; display: flex; background-color: aqua;">
+                        <div style="width: 60%; background-color: brown;">
+                            page1
+                        </div>
+                        <div style="width: 40%; background-color: blueviolet;">
+                            <a href='mailto:MAIL_ADDRESS'><button class="btn btn-outline-info">ssh079507@gmail.com</button></a>
+                            <a href=""><img src="/static/base/main/notion.png" style="width:50px; height:50px"></a>
+                            <a href=""><img src="/static/base/main/github.png" style="width:50px; height:50px"></a>
+                            <a href=""><img src="/static/base/main/google.png" style="width:50px; height:50px"></a>
+                        </div> 
+                    </div>
+                    <div class="col-12" style="padding-top: 50px; width: 100%;">
+                      <b>AWS와 Web Server를 깊이 있게 개발해 나가고 싶은 Junior 개발자입니다.</b>
+                      <p>Backend에도 관심을 가지는 등, 분야를 가리지 않고 적극적으로 개발에 대한 관심사를 넓혀나가고 있습니다.</p><br>
+                      <b>" 우물 안 개구리가 되지 말자, 내가 아는 것이 전부가 아니다. "</b>  항상 되새기고 또 되새기는 문장입니다.
+                      <p>그렇게 다양한 대외활동과 협업경험을 쌓았으며, <b>매번새로운 계획과 도전</b>은 큰 자극제가 되어 주었습니다.</p><br><br>
+                      <div><b>스스로에게 새로운 과제를 내어주며 계속해서발전해 나갈 기회를 만들어주고자 합니다.</b></div>
+                      <div class="text-end"><a href="{% url 'coverletter:index' %}" ><button class="btn btn-outline-success">Coverletter</button></a></div>
+                    </div>
+                    
+                </div>
+                <div class="row mt-5" style="height: 20%;">
+                    <div class="col-12" style="padding-right: 30px;">                   
+                        <button class="btn btn-outline-light" onclick="thirdpage()">▼</button>
+                    </div>
+                </div>
+            </div>
+          
         </div>
 
         <!-- OS Ability Info -->
@@ -73,6 +111,32 @@
         swiper.slideTo(4, 500, false)
     }
     </script>
+    <script>
+        const $txt = document.querySelector(".txt-title");
+        const content = "Welcome\n Newhoon's Portfolio Page !!";
+        let contentIndex = 0;
+        let intervalId;
+    
+        let typing = function () {
+        $txt.innerHTML += content[contentIndex];
+        contentIndex++;
+        if (content[contentIndex] === "\n") {
+            $txt.innerHTML += "<br />";
+            contentIndex++;
+        }
+        if (contentIndex >= content.length) {
+            clearInterval(intervalId);
+        }
+        };
+    
+        intervalId = setInterval(typing, 100);
+    </script>
+    <style>
+        .txt-title {
+          font-size: 40px;
+          font-weight: bolder;
+        }
+    </style>
 
 {% endblock %}
 
