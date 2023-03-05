@@ -4,7 +4,51 @@
 
 {% block con %}
 
+<style>
+        .modal {
+        display: none;
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        overflow: auto;
+        background-color: rgba(0, 0, 0, 0.4); /* Background color with transparency */
+        }
 
+        .modal-content {
+        position: relative;
+        top: 50%;
+        transform: translateY(-50%);
+        background-color: #000000;
+        margin: auto;
+        padding: 20px;
+        border: 1px solid #c8f2ff;
+        width: 80%;
+        max-width: 600px;
+        }
+
+        .close {
+        position: absolute;
+        top: 0;
+        right: 0;
+        font-size: 28px;
+        font-weight: bold;
+        color: #ffffff;
+        cursor: pointer;
+        }
+
+        .close:hover,
+        .close:focus {
+        color: #ffffff;
+        text-decoration: none;
+        cursor: pointer;
+        }
+        .txt-title {
+        font-size: 40px;
+        font-weight: bolder;
+        }
+        
+    </style>
 
     <!-- Swiper -->
     <div class="swiper mySwiper">
@@ -12,7 +56,7 @@
 
         <div class="swiper-slide container-fluid" style="color: white;">
        
-            <div class="col container" style="height: 700px;">
+            <div class="container" style="height: 700px;">
                 <div class="row" style="justify-content: space-around; height: 100%;">
                     <div>
                         <p class="txt-title"></p>
@@ -30,44 +74,216 @@
             </div>
         </div>
 
-        <!-- Who am I Info -->
+       <!-- Who am I Info -->
         <div class="swiper-slide container-fluid " style="color: white;">
-            <div class="col container" style="height: 100%; padding-top: 50px;">
-                <h1>Who am I</h1><br>
-                <div class="row" style="height: 80%;">
-                    <div class="col-12" style="justify-content: space-around; display: flex; background-color: aqua;">
-                        <div style="width: 60%; background-color: brown;">
-                            page1
+            <div class="container" style="padding-top: 40px;">
+                <h1>Who am I</h1>
+                <div class="row g-0" style="padding-top: 20px;">
+                    <div class="col-6">
+                        <div>
+                            <img src="/static/base/main/KakaoTalk_20230302_213726503.jpg" class="rounded-3"  style="width: 95%;">
                         </div>
-                        <div style="width: 40%; background-color: blueviolet;">
-                            <a href='mailto:MAIL_ADDRESS'><button class="btn btn-outline-info">ssh079507@gmail.com</button></a>
+                    </div>
+
+                    <div class="col-6" style="padding-top: 20px;">
+                        <p class="text-start">▫️ NAME : 신상훈</p>
+                        <p class="text-start">▫️ AGE : 1995.07.07</p>
+                        <p class="text-start">▫️ Tech ( Click the Icon )</p>
+                        <div style="justify-content: space-around; display: flex;">
+                            <img id="network-img" src="/static/base/main/network.png" style="width: 50px; height: 50px;" onclick="openModal('network-modal')"> 
+                            <img id="python-img" src="/static/base/main/python.png" style="width: 50px; height: 50px;" onclick="openModal('python-modal')">
+                            <img id="django-img" src="/static/base/main/django.png" style="width: 50px; height: 50px;" onclick="openModal('django-modal')">
+                            <img id="linux-img" src="/static/base/main/linux.png" style="width: 50px; height: 50px;" onclick="openModal('linux-modal')">
+                            <img id="aws-img" src="/static/base/main/amazon-aws.png" style="width: 50px; height: 50px;" onclick="openModal('aws-modal')">
+                        </div><br>
+                        
+                        <!-- 모달창 -->
+                            <div id="network-modal" class="modal" onclick="closeModal()" style="color: white;">
+                                <div class="modal-content" onclick="event.stopPropagation()">
+                                <span class="close" onclick="closeModal()">&times;</span>
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <img src="/static/base/main/topology.png">
+                                        </div>
+                                        <div class="col-12" style="font-weight: bolder;">
+                                            <hr>
+                                            <p class="text-start">🔳 OSI 7 Layer, TCP/IP 통신 구조 파악</p>
+                                            <p class="text-start">🔳 Subneting을 활용한 Classful한 IP대역 설정 </p>
+                                            <p class="text-start">🔳 Routing</p>
+                                            <p class="text-start">🔳 Switching</p>
+                                            <p class="text-start">🔳 Campus Network 설계</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div id="python-modal" class="modal" onclick="closeModal()">
+                                <div class="modal-content" onclick="event.stopPropagation()">
+                                <span class="close" onclick="closeModal()">&times;</span>
+                                <div class="row">
+                                    <div class="col-12">
+                                        <img src="/static/base/main/code.jpeg">
+                                    </div>
+                                    <div class="col-12" style="font-weight: bolder;">
+                                        <hr>
+                                        <p class="text-start">🔳 파이썬의 기본 코드 및 문법 사용</p>
+                                        <p class="text-start">🔳 While 반복문을 이용한 암기 게임</p>
+                                        <p class="text-start">🔳 Beatifulsoup, Selinium을 활용한 네이버 영화정보 출력</p>
+                                    </div>
+                                </div>
+                                </div>
+                            </div>
+                            
+                            <div id="django-modal" class="modal" onclick="closeModal()">
+                                <div class="modal-content" onclick="event.stopPropagation()">
+                                <span class="close" onclick="closeModal()">&times;</span>
+                                <div class="row">
+                                    <div class="col-12">
+                                        <img src="/static/base/main/django-builtin-tags.png">
+                                    </div>
+                                    <div class="col-12" style="font-weight: bolder;">
+                                        <hr>
+                                        <p class="text-start">🔳 Django REST Framework API 서버 구축 </p>
+                                        <p class="text-start">🔳 ORM형식을 통한 RDMS 관리작업 진행 </p>
+                                        <p class="text-start">🔳 GET & Post 데이터 전송 구조에 대한 이해</p>
+                                        <p class="text-start">🔳 Bootstrap Framwork, HTML, CSS, JS를 활용한 나만의 웹사이트 제작</p>
+                                    </div>
+                                </div>
+                                </div>
+                            </div>
+                            
+                            <div id="linux-modal" class="modal" onclick="closeModal()">
+                                <div class="modal-content" onclick="event.stopPropagation()">
+                                <span class="close" onclick="closeModal()">&times;</span>
+                                <div class="row">
+                                    <div class="col-12">
+                                        <img src="/static/base/main/linux.png">
+                                    </div>
+                                    <div class="col-12" style="font-weight: bolder;">
+                                        <hr>
+                                        <p class="text-start">🔳 Linux 서버 구조 파악</p>
+                                        <p class="text-start">🔳 Public 3tier On-Premise 설계 및 구축</p>
+                                        <p class="text-start">🔳 ELK, Grapana, Prometeus 활용한 모니터링</p>
+                                    </div>
+                                </div>
+                                </div>
+                            </div>
+                            
+                            <div id="aws-modal" class="modal" onclick="closeModal()">
+                                <div class="modal-content" onclick="event.stopPropagation()">
+                                <span class="close" onclick="closeModal()">&times;</span>
+                                <div class="row">
+                                    <div class="col-12">
+                                        <img src="/static/base/main/amazon-aws.png">
+                                    </div>
+                                    <div class="col-12" style="font-weight: bolder;">
+                                        <hr>
+                                        <p class="text-start">🔳 VPC, Router53, EC2, RDS ...등을 활용한 네트워크 구축</p>
+                                        <p class="text-start">🔳 CI/CD(Beanstalk, codepipeline, git) 활용 웹사이트 제작</p>
+                                        <p class="text-start">🔳 </p>
+                                    </div>
+                                </div>
+                                </div>
+                            </div>
+
+                        <p class="text-start">▫️ Contact</p>
+                        <div style="justify-content: space-evenly; display: flex;">
+                            <a href='mailto:ssh079507@gmail.com'>
+                                <img src="/static/base/main/gmail.png" style="width: 50px; height: 50px;">
+                            </a>
                             <a href=""><img src="/static/base/main/notion.png" style="width:50px; height:50px"></a>
-                            <a href=""><img src="/static/base/main/github.png" style="width:50px; height:50px"></a>
-                            <a href=""><img src="/static/base/main/google.png" style="width:50px; height:50px"></a>
-                        </div> 
+                            <a href="https://github.com/NewHoony/"><img src="/static/base/main/github.png" style="width:50px; height:50px"></a> 
+                        </div>
                     </div>
-                    <div class="col-12" style="padding-top: 50px; width: 100%;">
-                      <b>AWS와 Web Server를 깊이 있게 개발해 나가고 싶은 Junior 개발자입니다.</b>
-                      <p>Backend에도 관심을 가지는 등, 분야를 가리지 않고 적극적으로 개발에 대한 관심사를 넓혀나가고 있습니다.</p><br>
-                      <b>" 우물 안 개구리가 되지 말자, 내가 아는 것이 전부가 아니다. "</b>  항상 되새기고 또 되새기는 문장입니다.
-                      <p>그렇게 다양한 대외활동과 협업경험을 쌓았으며, <b>매번새로운 계획과 도전</b>은 큰 자극제가 되어 주었습니다.</p><br><br>
-                      <div><b>스스로에게 새로운 과제를 내어주며 계속해서발전해 나갈 기회를 만들어주고자 합니다.</b></div>
-                      <div class="text-end"><a href="{% url 'coverletter:index' %}" ><button class="btn btn-outline-success">Coverletter</button></a></div>
+
+                    <div class="col-6" style="padding-top: 20px; width: 100%; font-size: 15px; color: white;">
+                        <b>AWS와 Web Server를 깊이 있게 개발해 나가고 싶은 바리스타 출신 신상훈입니다.</b>
+                        <p>AWS, 네트워크, 리눅스, GO언어 등 분야를 가리지 않고 늦게 시작한만큼 더욱 열심히 공부하고 계속 공부할 것입니다.</p><br>
+                        <b>" 우물 안 개구리가 되지 말자, 내가 아는 것이 전부가 아니다. "</b>  항상 되새기고 또 되새기는 문장입니다.
+                        <p>국비과정을 통해 흥미를 가지고 있던 IT에 빠져들게 되었고<b> 매번새로운 계획과 도전</b>은 큰 자극제가 되어 주었습니다.</p><br>
+                        <b>스스로에게 새로운 과제를 내어주며 계속해서발전해 나갈 기회를 만들어주고자 합니다.</b>
+                        <div class="text-end"><a href="{% url 'coverletter:index' %}" ><button class="btn btn-outline-success">Coverletter</button></a></div>
                     </div>
-                    
+                
                 </div>
-                <div class="row mt-5" style="height: 20%;">
+                <div class="row">
                     <div class="col-12" style="padding-right: 30px;">                   
                         <button class="btn btn-outline-light" onclick="thirdpage()">▼</button>
                     </div>
                 </div>
             </div>
-          
         </div>
 
         <!-- OS Ability Info -->
-        <div class="swiper-slide container-fluid "  style="color: white;">
-                <button class="btn btn-outline-light" onclick="fourthpage()">▼</button>
+        <div class="swiper-slide container-fluid" style="color: white;">
+            <div class="row container" style="height: 800px";>
+                <div class="text-start" style="height: 5%;">
+                    <h1>Project</h1>
+                </div>
+                
+                <div class="row mt-4" style="height: 90%;">
+                  <div class="col-12">
+                    <span class="row border border-dark" style="display: flex; width: auto; height: 100%;">
+                        <h4 style="font-weight: bolder; color: yellow;">AWS</h4>
+                        <div class="col-4">
+                            <div class="card" style="width: 400px; height: 150px;">
+                                <img src="/static/base/main/aws1.png" class="card-img">
+                              </div>
+                        </div>
+                        <div class="col-4">
+                            <div class="card text-bg-dark" style="width: 400px; height: 150px;">
+                                <img src="/static/base/main/aws2.png" class="card-img">
+                              </div>
+                        </div>
+                        <div class="col-4">
+                            <div class="card text-bg-dark" style="width: 400px; height: 150px;">
+                                <img src="/static/base/main/aws3.png" class="card-img">
+                              </div>
+                        </div>
+                    </span>
+                  </div>
+                  <div class="col-12" style="padding-top: 10px;">
+                    <span class="row border border-dark" style="display: flex; height: 100%;">
+                        <h4 style="font-weight: bolder; color:aqua;">Other</h4>
+                        <div class="col-4">
+                            <div class="card text-bg-dark" style="width: 400px; height: 150px;">
+                                <img src="/static/base/main/topology.png" class="card-img">
+                              </div>
+                        </div>
+                        <div class="col-4">
+                            <div class="card text-bg-dark" style="width: 400px; height: 150px;">
+                                <img src="/static/base/main/django-project.png" class="card-img">
+                              </div>
+                        </div>
+                        <div class="col-4">
+                            <div class="card text-bg-dark" style="width: 400px; height: 150px;">
+                                <img src="/static/base/main/Python-project.png" class="card-img">
+                              </div>
+                        </div>
+                        <div class="col-4">
+                            <div class="card text-bg-dark" style="width: 400px; height: 150px;">
+                                <img src="/static/base/main/amazon-aws.png" class="card-img">
+                              </div>
+                        </div>
+                        <div class="col-4">
+                            <div class="card text-bg-dark" style="width: 400px; height: 150px;">
+                                <img src="/static/base/main/amazon-aws.png" class="card-img">
+                              </div>
+                        </div>
+                        <div class="col-4">
+                            <div class="card text-bg-dark" style="width: 400px; height: 150px;">
+                                <img src="/static/base/main/amazon-aws.png" class="card-img">
+                              </div>
+                        </div>
+                    </span>
+                  </div>
+                </div>
+    
+                <div class="col-12 mt-3" style="height: 10%; padding-right: 30px;">                   
+                        <button class="btn btn-outline-light" onclick="fourthpage()">▼</button>
+                </div>
+                
+            </div>
         </div>
 
         <!-- Web Ability Info -->
@@ -82,10 +298,10 @@
 
         </div>
 
-        <div class="swiper-slide">Slide 6</div>
+        <!-- <div class="swiper-slide">Slide 6</div>
         <div class="swiper-slide">Slide 7</div>
         <div class="swiper-slide">Slide 8</div>
-        <div class="swiper-slide">Slide 9</div>
+        <div class="swiper-slide">Slide 9</div> -->
 
       </div>
       <div class="swiper-pagination"></div>      
@@ -131,12 +347,20 @@
     
         intervalId = setInterval(typing, 100);
     </script>
-    <style>
-        .txt-title {
-          font-size: 40px;
-          font-weight: bolder;
+    <script>
+        function openModal(modalId) {
+        var modal = document.getElementById(modalId);
+        modal.style.display = "block";
         }
-    </style>
+
+        function closeModal() {
+        var modals = document.getElementsByClassName("modal");
+        for (var i = 0; i < modals.length; i++) {
+            modals[i].style.display = "none";
+        }
+        }
+
+    </script>
 
 {% endblock %}
 
