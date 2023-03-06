@@ -3,3 +3,12 @@
 .elasticbeanstalk/*
 !.elasticbeanstalk/*.cfg.yml
 !.elasticbeanstalk/*.global.yml
+
+
+#python cache
+*.log
+*.pot
+*.pyc
+__pycache__/
+local_settings.py
+media
