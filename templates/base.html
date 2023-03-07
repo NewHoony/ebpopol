@@ -27,8 +27,7 @@
                 <a class="navbar-brand" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbarDark" aria-controls="offcanvasNavbarDark"><span class="material-symbols-outlined" style="color: white; font-size: 25px; padding-left: 10px;">
                     menu
                 </span></a>
-             
-                <div class="offcanvas offcanvas-start text-bg-dark" data-bs-scroll="true" data-bs-backdrop="false" tabindex="-1" id="offcanvasNavbarDark" aria-labelledby="offcanvasNavbarDarkLabel" style="width: fit-content; height: fit-content;">
+                <div class="offcanvas offcanvas-start text-bg-dark" data-bs-scroll="true" data-bs-backdrop="false" tabindex="-1" id="offcanvasNavbarDark" aria-labelledby="offcanvasNavbarDarkLabel" style="width: fit-content; height: fit-content; background-image: url(/static/base/main.jpg);">
                     
                     <!-- offcanvas header 부분 (홈으로 이동) -->
                     <div class="offcanvas-header">
@@ -63,7 +62,7 @@
                                 <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
                                   <hr>
                                   <li><b><a href="{% url 'coverletter:index' %}" class="link-light d-inline-flex text-decoration-none rounded">🧑‍💻 Cover letter</a></b></li><br>
-                                  <li><b><a href="#" class="link-light d-inline-flex text-decoration-none rounded">📋 Guest Book</a></b></li><br>
+                                  <li><b><a href="{% url 'guestbook:index' %}" class="link-light d-inline-flex text-decoration-none rounded">📋 Guest Book</a></b></li><br>
                                   <hr>
                                 </ul>
                               </div>
@@ -95,8 +94,12 @@
                 </div>
                 <!-- 인증되지 않은 회원 페이지 -->
                 {% if user.is_authenticated %}
+                <div class="navbar-brand">
+                  <a href="{% url 'main:index' %}"><img src="/static/base/main/main.png" style="height: 50px;"></a>
+                </div>
                 {% else %}
                   <div class="navbar-brand">
+                      <a href="{% url 'main:index' %}"><img src="/static/base/main/main.png" style="width: 50px; height: 50px;"></a>
                       <a href="{% url 'main:signin' %}"><button type="button" class="btn btn-outline-light" style="width: fit-content; font-size: 15px;">SignIn</button></a>
                       <a href="{% url 'main:signup' %}"><button type="button" class="btn btn-outline-light" style="width: fit-content; font-size: 15px;">SignUp</button></a>
                   </div>
@@ -113,6 +116,18 @@
 
         {% block con %}
         {% endblock %}
+
+        {% if user.is_authenticated %}
+
+          {% block auth %}
+          {% endblock %}
+        
+        {% else %}
+
+          {% block noauth %}
+          {% endblock %}
+
+        {% endif %}
   
 
 </html>

@@ -1,6 +1,23 @@
 {% extends 'base.html' %}
 
 {% block con %}
+<style>
+    .card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    grid-gap: 1rem;
+    }
+
+    .card {
+    border: 1px solid #fff;
+    background-color: transparent;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    padding: 0rem;
+    }
+    .card-body {
+    padding: 0; /* remove default padding */
+    }
+</style>
 
 <div class ="container-fluid" style="color: white; padding-top: 50px;">
 
@@ -22,31 +39,29 @@
                     {% endif %}
                 </div>
         
-                <div>
+                <div class="card-grid">
                     {% for book in books %}
-                    <div>
-                        <div class="card border-light mb-3" style="width: fit-content; height: fit-content; background-color:transparent;">
-                            <div class="card-body">
-                                {% if book.site_cover %}
-                                    <img src="{{ book.site_cover.url }}" class="card-img-top" alt="{{ book.site_name }}"><br>
-                                {% else %}
-                                    <span class="text-muted">No cover</span><br>
-                                {% endif %}
-                                <p class="card-text" style="height: 25px;">{{ book.site_con }}</p>
-                                <div class="text-center">
-                                    <a href="{{ book.site_url }}" targer="_blank" class="btn btn-outline-info">Detail View</a>
-                                </div>
-                                <div class="text-end">
-                                {% if user.is_superuser %}
-                                    <form method="post" action="{% url 'ytech:delete_book' book.pk %}">
-                                    {% csrf_token %}
-                                        <button type="submit" class="btn btn-outline-danger btn-sm">Del</button>
-                                    </form>
-                                {% endif %}
-                                </div>
-                            </div>
+                      <div class="card" style="width: 280px; height: auto;">
+                        <div class="card-body">
+                          {% if book.site_cover %}
+                            <img src="{{ book.site_cover.url }}" class="card-img-top" alt="{{ book.site_name }}" width="100%" height="120px">
+                          {% else %}
+                            <span class="text-muted">No cover</span>
+                          {% endif %}
+                          <p class="card-text" style="height: 25px; padding-left: 10px; padding-top: 5px;">{{ book.site_con }}</p>
+                          <div class="text-center">
+                            <a href="{{ book.site_url }}" targer="_blank"><img src="/static/base/main/shortcut.svg" style="width: 50px; height: 30px; float: right;"></a>
+                          </div>
+                          <div class="text-end" style="padding-bottom: 5px;">
+                            {% if user.is_superuser %}
+                              <form method="post" action="{% url 'ytech:delete_book' book.pk %}">
+                                {% csrf_token %}
+                                <button type="submit" class="btn btn-outline-danger btn-sm">Del</button>
+                              </form>
+                            {% endif %}
+                          </div>
                         </div>
-                    </div>
+                      </div>
                     {% endfor %}
                 </div>
             </div>

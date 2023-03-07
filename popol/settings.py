@@ -51,6 +51,7 @@ INSTALLED_APPS = [
     'xtech.apps.XtechConfig',
     'ytech.apps.YtechConfig',
     'ztech.apps.ZtechConfig',
+    'guestbook.apps.GuestbookConfig',
 ]
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
