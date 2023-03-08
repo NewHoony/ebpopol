@@ -6,7 +6,7 @@ from .models import Guest
 class GuestForm(forms.ModelForm):
     class Meta:
         model = Guest
-        fields = ['name', 'email', 'message']
+        fields = ['email', 'message']
         
         
     def __init__(self, *args, **kwargs):

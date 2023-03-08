@@ -7,7 +7,9 @@ def index(request):
     if request.method == 'POST':
         form = GuestForm(request.POST)
         if form.is_valid():
-            form.save()
+            guest = form.save(commit=False)
+            guest.writer = request.user
+            guest.save()
             return redirect('guestbook:index')
     else:
         form = GuestForm()

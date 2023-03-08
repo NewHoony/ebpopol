@@ -17,9 +17,11 @@
                 {% for guest in guests %}
                 <span class="row mt-5 border border-light">
                     <div class="col-lg-12" style="padding-top: 5px;">
-                        <img src ="{{ user.getpic }}" class="rounded-circle" width="10%">
-                        {{ guest.name }} ({{ guest.email }}) 
+                        <img src ="{{ guest.writer.getpic }}" class="rounded-circle" width="10%">
+                        {{ guest.writer }} ({{ guest.email }}) 
+                        {% if guest.writer == user %}
                         <a href="{% url 'guestbook:delete_guest' guest.id %}" style="float: right;"><button class="btn btn-outline-danger">Del</button></a>
+                        {% endif %}
                         <div class = "row text-start">
                             <div>
                                 <hr>
