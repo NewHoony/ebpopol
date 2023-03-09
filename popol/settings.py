@@ -27,8 +27,7 @@ SECRET_KEY = 'django-insecure-7ffj)vep*ha)ovtns%@8gwqzer%0oic**-ay4c#aisd@0g_ws-
 DEBUG = True
 
 ALLOWED_HOSTS = [
-    'popol-env.eba-xqfjjpay.ap-northeast-2.elasticbeanstalk.com',
-    '127.0.0.1',
+    'ebpopol-dev.ap-northeast-2.elasticbeanstalk.com',
     'www.newhoon.link'
 ]
 
