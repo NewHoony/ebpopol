@@ -28,7 +28,8 @@ DEBUG = True
 
 ALLOWED_HOSTS = [
     'popol-env.eba-xqfjjpay.ap-northeast-2.elasticbeanstalk.com',
-    '127.0.0.1'
+    '127.0.0.1',
+    'www.newhoon.link'
 ]
 
 
