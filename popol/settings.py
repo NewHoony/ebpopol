@@ -51,6 +51,7 @@ INSTALLED_APPS = [
     'ytech.apps.YtechConfig',
     'ztech.apps.ZtechConfig',
     'guestbook.apps.GuestbookConfig',
+    'storages',
 ]
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
@@ -153,7 +154,7 @@ STATIC_ROOT = 'static'
 
 
 MEDIA_URL ="/media/"
-MEDIA_ROOT = 'media'
+MEDIA_ROOT = 'uploads'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
@@ -163,4 +164,17 @@ CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
 CRISPY_TEMPLATE_PACK = "bootstrap5"
 
 
+# S3 Storages
+DEFAULT_FILE_STORAGE = "config.custom_storages.UploadStorage"
+
+AWS_ACCESS_KEY_ID = os.environ.get("AKIATTTJOCYVDKSRKHUA")
+AWS_SECRET_ACCESS_KEY = os.environ.get("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")
+
+AWS_STORAGE_BUCKET_NAME = "ebpopol-s3"
+AWS_S3_REGION_NAME = "ap-northeast-2"
+
+AWS_DEFAULT_ACL = "public-read"
+AWS_AUTO_CREATE_BUCKET = False
+
+AWS_S3_CUSTOM_DOMAIN = (f"{AWS_STORAGE_BUCKET_NAME}.s3.{AWS_S3_REGION_NAME}.amazonaws.com")
 
