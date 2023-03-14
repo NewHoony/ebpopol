@@ -165,7 +165,7 @@ CRISPY_TEMPLATE_PACK = "bootstrap5"
 
 
 # S3 Storages
-DEFAULT_FILE_STORAGE = "config.custom_storages.UploadStorage"
+DEFAULT_FILE_STORAGE = "popol.custom_storages.UploadStorage"
 
 AWS_ACCESS_KEY_ID = os.environ.get("AKIATTTJOCYVDKSRKHUA")
 AWS_SECRET_ACCESS_KEY = os.environ.get("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")
