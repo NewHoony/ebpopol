@@ -8,6 +8,6 @@ class User(AbstractUser):
     def getpic(self):
         if self.pic:
             return self.pic.url
-        return "/media/noimage.png"
+        return "/uploads/noimage.png"
 
 # Create your models here.
